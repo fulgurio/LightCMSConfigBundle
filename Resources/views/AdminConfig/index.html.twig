@@ -1,0 +1,35 @@
+{% extends 'FulgurioLightCMSBundle::adminBase.html.twig' %}
+
+{% block title %}{% trans from 'admin' %}fulgurio.lightcms_config.title{% endtrans %}{% endblock %}
+
+{% block content %}
+{% for flashMessage in app.session.flashbag.get('notice') %}			<div class="alert alert-notice">{{ flashMessage|trans }}<br /></div>{% endfor %}
+{% for flashMessage in app.session.flashbag.get('success') %}			<div class="alert alert-success">{{ flashMessage|trans }}<br /></div>{% endfor %}
+<form method="post" class="form-horizontal" action="{{ path('LightCMS_Admin_Config') }}">
+	<fieldset>
+		<legend>{%trans from 'admin' %}fulgurio.lightcms_config.edit_form.legend{% endtrans %}</legend>
+{% if form.configs.children is not empty %}
+{%   for config in form.configs.children %}
+		<div class="row">
+			<div class="span12">
+				<div class="control-group">
+					<label class="control-label" for="{{ config.meta_value.vars.id }}">{{ config.meta_key.vars.value|trans({}, 'admin') }}</label>
+					<div class="controls">
+						<input type="hidden" name="{{ config.meta_key.vars.full_name }}" value="{{ config.meta_key.vars.value }}" />
+						<input type="text" id="{{ config.meta_value.vars.id }}" class="input-xlarge" name="{{ config.meta_value.vars.full_name }}" value="{{ config.meta_value.vars.value }}" />
+					</div>
+				</div>
+			</div>
+		</div>
+{%   endfor %}
+		<div class="clearfix"></div>
+		<div class="form-actions">
+			<input type="hidden" name="{{ form._token.vars.full_name }}" value="{{ form._token.vars.value }}" />
+			<button type="submit" class="btn btn-primary" name="realSubmit" value="1" tabindex="1">{% trans from 'admin' %}fulgurio.lightcms.save{% endtrans %}</button>
+		</div>
+{% else %}
+		<p>{% trans from 'admin' %}fulgurio.lightcms_config.edit_form.no_params{% endtrans %}</p>
+{% endif %}
+	</fieldset>
+</form>
+{% endblock %}

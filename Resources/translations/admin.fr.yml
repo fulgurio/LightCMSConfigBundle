@@ -1,0 +1,10 @@
+fulgurio:
+  lightcms:
+    header_link:
+      config_link:     Configuration
+  lightcms_config:
+    title:             Configuration
+    edit_form:
+      legend:          Configuration
+      no_params:       Aucun paramètre éditable
+      success_msg:     Les paramètres ont bien été enregistrés

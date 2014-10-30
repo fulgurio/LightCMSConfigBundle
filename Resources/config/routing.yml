@@ -1,0 +1,3 @@
+LightCMS_Admin_Config:
+    pattern:   /admin/config
+    defaults:  { _controller: FulgurioLightCMSConfigBundle:AdminConfig:index }

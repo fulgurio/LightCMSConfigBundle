@@ -1,0 +1,9 @@
+<?php
+
+namespace Fulgurio\LightCMSConfigBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+class Config
+{
+}

@@ -1,0 +1,22 @@
+Fulgurio\LightCMSConfigBundle\Entity\Config:
+  type: entity
+  repositoryClass: Fulgurio\LightCMSConfigBundle\Repository\ConfigRepository
+  table: site_config
+  fields:
+    id:
+      type: integer
+      id: true
+      generator:
+        strategy: AUTO
+    meta_key:
+      type: string
+      length: 32
+    meta_value:
+      type: text
+      nullable: true
+    created_at:
+      type: datetime
+      nullable: false
+    updated_at:
+      type: datetime
+      nullable: true

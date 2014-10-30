@@ -1,0 +1,10 @@
+fulgurio:
+  lightcms:
+    header_link:
+      config_link:     Configuration
+  lightcms_config:
+    title:             Configuration
+    edit_form:
+      legend:          Configuration
+      no_params:       No editables params
+      success_msg:     Params have been saved !
