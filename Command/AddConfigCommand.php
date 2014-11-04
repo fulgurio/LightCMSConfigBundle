@@ -27,6 +27,7 @@ class AddConfigCommand extends ContainerAwareCommand
         $this
             ->setName('config:add')
             ->setDescription('Add new configuration')
+            ->addArgument('type', InputArgument::REQUIRED, 'Type')
             ->addArgument('label', InputArgument::REQUIRED, 'Label')
             ->addArgument('value', InputArgument::REQUIRED, 'Value')
         ;
@@ -39,6 +40,7 @@ class AddConfigCommand extends ContainerAwareCommand
     protected function execute(InputInterface $input, OutputInterface $output)
     {
         $doctrine = $this->getContainer()->get('doctrine');
+        $metaType = $input->getArgument('type');
         $metaKey = $input->getArgument('label');
         $metaValue = $input->getArgument('value');
 
@@ -48,6 +50,7 @@ class AddConfigCommand extends ContainerAwareCommand
             throw new \Exception($metaKey . ' already exists');
         }
         $config = new Config();
+        $config->setMetaType($metaType);
         $config->setMetaKey($metaKey);
         $config->setMetaValue($metaValue);
         $config->setCreatedAt(new \DateTime());

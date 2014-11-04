@@ -7,4 +7,10 @@ fulgurio:
     edit_form:
       legend:          Configuration
       no_params:       No editables params
+      select_file:     Select a file
+      change_file:     Change file
+      remove_file:     Remove file
+      select_image:    Select a picture
+      change_image:    Change the picture
+      remove_image:    Remove picture
       success_msg:     Params have been saved !

@@ -23,8 +23,10 @@ class ConfigType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('meta_key', 'hidden')
+            ->add('meta_type', 'hidden', array('read_only' => TRUE))
+            ->add('meta_key', 'hidden', array('read_only' => TRUE))
             ->add('meta_value', 'text')
+            ->add('meta_file_value', 'file', array('mapped' => FALSE))
         ;
     }
 

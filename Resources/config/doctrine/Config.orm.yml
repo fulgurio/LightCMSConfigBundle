@@ -8,9 +8,14 @@ Fulgurio\LightCMSConfigBundle\Entity\Config:
       id: true
       generator:
         strategy: AUTO
+    meta_type:
+      type: string
+      length: 32
+      nullable: false
     meta_key:
       type: string
       length: 32
+      nullable: false
     meta_value:
       type: text
       nullable: true

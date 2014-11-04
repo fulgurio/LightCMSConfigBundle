@@ -25,6 +25,11 @@ class Config
     /**
      * @var string
      */
+    private $meta_type;
+
+    /**
+     * @var string
+     */
     private $meta_key;
 
     /**
@@ -51,6 +56,29 @@ class Config
     public function getId()
     {
         return $this->id;
+    }
+
+    /**
+     * Set meta_type
+     *
+     * @param string $metaType
+     * @return Config
+     */
+    public function setMetaType($metaType)
+    {
+        $this->meta_type = $metaType;
+
+        return $this;
+    }
+
+    /**
+     * Get meta_type
+     *
+     * @return string
+     */
+    public function getMetaType()
+    {
+        return $this->meta_type;
     }
 
     /**

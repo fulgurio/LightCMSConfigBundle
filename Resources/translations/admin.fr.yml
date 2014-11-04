@@ -7,4 +7,10 @@ fulgurio:
     edit_form:
       legend:          Configuration
       no_params:       Aucun paramètre éditable
+      select_file:     Sélectionner un fichier
+      change_file:     Changer de fichier
+      remove_file:     Supprimer le fichier
+      select_image:    Sélectionner une image
+      change_image:    Changer d'image
+      remove_image:    Supprimer l'image
       success_msg:     Les paramètres ont bien été enregistrés

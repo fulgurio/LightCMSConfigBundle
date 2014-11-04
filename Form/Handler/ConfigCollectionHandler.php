@@ -20,6 +20,19 @@ class ConfigCollectionHandler
     private $form;
     private $request;
 
+    /**
+     * Path where file will be moved
+     * @var string
+     */
+    private $uploadPath = '/uploads/';
+
+    /**
+     * Constructor
+     *
+     * @param RegistryInterface $doctrine
+     * @param Form $form
+     * @param Request $request
+     */
     public function __construct(RegistryInterface $doctrine, Form $form, Request $request)
     {
         $this->doctrine = $doctrine;
@@ -42,17 +55,36 @@ class ConfigCollectionHandler
             {
                 $now = new \DateTime();
                 $em = $this->doctrine->getManager();
-                foreach ($configs as $config)
+                foreach ($configs as $n => $config)
                 {
-                    if ($config->getId() == FALSE) {
+                    if ($config->getMetaType() === 'file'
+                            || $config->getMetaType() === 'image')
+                    {
+                        $file = $this->form['configs'][$n]->get('meta_file_value')->getData();
+                        if ($file)
+                        {
+                            if ($config->getMetaValue() !== ''
+                                    && $config->getMetaValue() !== NULL
+                                    && file_exists(__DIR__ . '/../../../../../web/' . $config->getMetaValue()))
+                            {
+                                unlink(__DIR__ . '/../../../../../web/' . $config->getMetaValue());
+                            }
+                            $filename = $file->getClientOriginalName();
+                            $file->move(__DIR__ . '/../../../../../web' . $this->uploadPath, $filename);
+                            $config->setMetaValue($this->uploadPath . $filename);
+                        }
+                    }
+                    if ($config->getId() == FALSE)
+                    {
                         $config->setCreatedAt($now);
                     }
-                    else {
+                    else
+                    {
                         $config->setUpdatedAt($now);
                     }
                     $em->persist($config);
-                    $em->flush();
                 }
+                $em->flush();
                 return TRUE;
             }
             return FALSE;
