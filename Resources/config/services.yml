@@ -1,0 +1,7 @@
+services:
+    fulgurio_lightcmsconfig.twig.extension:
+        class: Fulgurio\LightCMSConfigBundle\Extension\TwigExtension
+        tags:
+            -  { name: twig.extension }
+        arguments:
+            doctrine: "@doctrine"
