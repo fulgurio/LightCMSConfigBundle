@@ -1,13 +1,13 @@
 {
     "name": "fulgurio/light-cms-config-bundle",
-    "description": "Configuration editor for LightCMSBundle",
+    "description": "Configuration editor for LightCMSConfigBundle",
     "type" : "symfony-bundle",
     "authors": [{
             "name" : "Fulgurio",
             "homepage" : "http://fulgurio.net"
         }
     ],
-    "homepage" : "http://github.com/fulgurio/LightCMSBundle",
+    "homepage" : "http://github.com/fulgurio/LightCMSConfigBundle",
     "license": "GPL",
     "require": {
         "fulgurio/light-cms-bundle": "dev-master"
