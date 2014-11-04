@@ -29,7 +29,7 @@ class AddConfigCommand extends ContainerAwareCommand
             ->setDescription('Add new configuration')
             ->addArgument('type', InputArgument::REQUIRED, 'Type')
             ->addArgument('label', InputArgument::REQUIRED, 'Label')
-            ->addArgument('value', InputArgument::REQUIRED, 'Value')
+            ->addArgument('value', InputArgument::OPTIONAL, 'Value')
         ;
     }
 
