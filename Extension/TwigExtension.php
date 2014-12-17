@@ -37,7 +37,7 @@ class TwigExtension extends \Twig_Extension
     public function getFunctions()
     {
         return array(
-            'getConfig' => new \Twig_Function_Method($this, 'getConfig'),
+            new \Twig_SimpleFunction('getConfig', array($this, 'getConfig'))
         );
     }
 
